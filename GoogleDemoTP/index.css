@@ -1,0 +1,25 @@
+
+.data{
+    display: none;
+}
+
+.g-signin2{
+    position: absolute;
+    left: 5%;
+}
+
+.btn, .btn-danger{
+    margin-left: 10rem;
+}
+
+.rounded-circle{
+    margin-left: 10rem;
+}
+
+.alert-success, .alert-warning{
+    margin-left: 10rem;
+}
+
+.infos{
+    margin-left: 15px;
+}
