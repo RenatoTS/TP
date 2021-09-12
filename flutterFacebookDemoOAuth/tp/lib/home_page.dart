@@ -14,30 +14,42 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("FbOauthDemo"),
       ),
       body: Container(
         child: _isLoggedIn
-            ? Column(
-                children: [
-                  Image.network(_userObj["picture"]["data"]["url"]),
-                  Text(_userObj["name"]),
-                  Text(_userObj["email"]),
-                  TextButton(
-                      onPressed: () {
-                        FacebookAuth.instance.logOut().then((value) {
-                          setState(() {
-                            _isLoggedIn = false;
-                            _userObj = {};
+            ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: Container(
+                        height: 180.0,
+                        child: Image.network(_userObj["picture"]["data"]["url"])),
+                    ),
+                    SizedBox(height: 15.0,),
+                    Text('Usuario: '+_userObj["name"], style: TextStyle( fontSize: 25.0, fontWeight: FontWeight.bold)),
+                    SizedBox(height: 15.0,),
+                    Text('Correo: '+_userObj["email"], style: TextStyle( fontSize: 25.0, fontWeight: FontWeight.bold)),
+                    SizedBox(height: 15.0,),
+                    ElevatedButton(
+                        onPressed: () {
+                          FacebookAuth.instance.logOut().then((value) {
+                            setState(() {
+                              _isLoggedIn = false;
+                              _userObj = {};
+                            });
                           });
-                        });
-                      },
-                      child: Text("Logout"))
-                ],
-              )
+                        },
+                        child: Text("Salir", style: TextStyle(fontSize:  20.0),))
+                  ],
+                ),
+            )
             : Center(
                 child: ElevatedButton(
-                  child: Text("Login with Facebook"),
+                  child: Text("Login con Facebook", style: TextStyle(fontSize:  20.0)),
                   onPressed: () async {
                     FacebookAuth.instance.login(
                         permissions: ["public_profile", "email"]).then((value) {

@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("DemoGoogleOauth"),
         backgroundColor: Colors.black38,
       ),
@@ -25,23 +26,25 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: Image.network(_userObj.photoUrl)
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Container(
+                        height: 100.0,
+                        child: Image.network(_userObj.photoUrl))
                     ),
                     SizedBox(height: 15.0,),
-                    Text(_userObj.displayName, style: TextStyle(
-                      fontSize: 25.0,
+                    Text('Usuario: '+_userObj.displayName, style: TextStyle(
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),),
                     SizedBox(height: 15.0,),
-                    Text(_userObj.email, style: TextStyle(
-                      fontSize: 25.0,
+                    Text('Correo: '+_userObj.email, style: TextStyle(
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),),
                     SizedBox(height: 15.0,),
                     ElevatedButton(
                      style: ElevatedButton.styleFrom(
-                        primary: Colors.purple,
+                        primary: Colors.black38,
                         padding: EdgeInsets.symmetric(
                           horizontal: 30, 
                           vertical: 10
@@ -66,7 +69,7 @@ class _HomePageState extends State<HomePage> {
             : Center(
                 child: ElevatedButton(
                   
-                  child: Text("Ingresar coon Google", style: TextStyle(
+                  child: Text("Login con Google", style: TextStyle(
                     fontSize: 20.0,
                   ),),
                   onPressed: () {
@@ -80,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                        primary: Colors.purple,
+                        primary: Colors.black38,
                         padding: EdgeInsets.symmetric(
                           horizontal: 30, 
                           vertical: 10
